@@ -66,7 +66,7 @@ const Configurator = () => {
                 }`}
               onClick={() => {
                 deskConfig.setFrameType(item.id);
-                deskConfig.setElectric(item.id == "adjustable");
+                if (item.id == "standard") deskConfig.setElectric(false);
               }}
             >
               <div className="font-semibold grow">{item.name}</div>
@@ -127,7 +127,10 @@ const Configurator = () => {
               rounded-3xl 
               cursor-pointer 
               ${deskConfig.electric ? "bg-zinc-300" : "bg-white"}`}
-              onClick={() => deskConfig.setElectric(!deskConfig.electric)}
+              onClick={() => {
+                deskConfig.setElectric(!deskConfig.electric)
+                if (!deskConfig.electric) deskConfig.moveCameraToElectricView()
+              }}
             >
               <div className={`relative h-6 w-12 rounded-full p-1 transition-colors duration-300 ${deskConfig.electric ? 'bg-slate-800' : 'bg-gray-300'}`}>
                 <div className={`absolute h-4 w-4 rounded-full bg-white shadow-md transition-transform duration-300 ${deskConfig.electric ? 'translate-x-6' : 'translate-x-0'}`}></div>
