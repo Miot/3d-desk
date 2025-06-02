@@ -27,18 +27,18 @@ const Desk = () => {
                 <meshStandardMaterial {...woodTextureProps} roughness={.3} />
             </mesh>
             {/* 可调节桌腿 */}
-            <mesh geometry={nodes.IStand1.geometry} scale={[1, 1, 1]} position={nodes.IStand1.position}>
-                <meshStandardMaterial metalness={.3} roughness={.1} />
+            <mesh geometry={nodes.IStand1.geometry} scale={[1, 1, 1]} position={nodes.IStand1.position} visible={deskConfig.frameType == 'adjustable'}>
+                <meshStandardMaterial metalness={.3} roughness={.1} color={deskConfig.frameColor} />
             </mesh>
-            <mesh geometry={nodes.IStand2.geometry} scale={[1, 1, 1]} position={nodes.IStand2.position}>
-                <meshStandardMaterial metalness={.3} roughness={.1} />
+            <mesh geometry={nodes.IStand2.geometry} scale={[1, 1, 1]} position={nodes.IStand2.position} visible={deskConfig.frameType == 'adjustable'}>
+                <meshStandardMaterial metalness={.3} roughness={.1} color={deskConfig.frameColor} />
             </mesh>
             {/* 经典桌腿 */}
-            <mesh geometry={nodes.ClassicStand1.geometry} scale={[1, 1, 1]} position={nodes.ClassicStand1.position}>
-                <meshStandardMaterial metalness={.3} roughness={.1} />
+            <mesh geometry={nodes.ClassicStand1.geometry} scale={[1, 1, 1]} position={nodes.ClassicStand1.position} visible={deskConfig.frameType == 'standard'}>
+                <meshStandardMaterial metalness={.3} roughness={.1} color={deskConfig.frameColor} />
             </mesh>
-            <mesh geometry={nodes.ClassicStand2.geometry} scale={[1, 1, 1]} position={nodes.ClassicStand2.position}>
-                <meshStandardMaterial metalness={.3} roughness={.1} />
+            <mesh geometry={nodes.ClassicStand2.geometry} scale={[1, 1, 1]} position={nodes.ClassicStand2.position} visible={deskConfig.frameType == 'standard'}>
+                <meshStandardMaterial metalness={.3} roughness={.1} color={deskConfig.frameColor} />
             </mesh>
             {/* 升降面板 */}
             <mesh geometry={nodes.Panel.geometry} scale={[1, 1, 1]} position={nodes.Panel.position}>
