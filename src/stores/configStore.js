@@ -5,8 +5,8 @@ const DEFAULT_WIDTH = 60
 
 const useConfigStore = create(
     (set, get) => ({
-        default_length: DEFAULT_LENGTH,
-        default_width: DEFAULT_WIDTH,
+        defaultLength: DEFAULT_LENGTH,
+        defaultWidth: DEFAULT_WIDTH,
         length: DEFAULT_LENGTH,
         width: DEFAULT_WIDTH,
         topMaterial: 'oak',

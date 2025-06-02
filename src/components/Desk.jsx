@@ -2,6 +2,7 @@ import { useGLTF, useTexture } from "@react-three/drei";
 import textures from '../stores/detail'
 import useConfigStore from '../stores/configStore'
 import * as THREE from 'three'
+import { useMemo } from "react";
 
 const useTextureWithSettings = (textureConfig) => {
     const textureProps = useTexture({
@@ -16,14 +17,15 @@ const useTextureWithSettings = (textureConfig) => {
 }
 
 const Desk = () => {
-    const { nodes, materials } = useGLTF('./models/desk.glb')
+    const { nodes } = useGLTF('./models/desk.glb')
     const deskConfig = useConfigStore()
     const woodTextureProps = useTextureWithSettings(textures[deskConfig.topMaterial])
+    const computedLengthRadio = useMemo(() => deskConfig.length / deskConfig.defaultLength, [deskConfig.length])
 
     return (
         <group dispose={null}>
             {/* 桌面 */}
-            <mesh geometry={nodes.Top.geometry} scale={[1, 1, 1]} position={nodes.Top.position}>
+            <mesh geometry={nodes.Top.geometry} scale={[computedLengthRadio, 1, 1]} position={nodes.Top.position}>
                 <meshStandardMaterial {...woodTextureProps} roughness={.3} />
             </mesh>
             {/* 可调节桌腿 */}

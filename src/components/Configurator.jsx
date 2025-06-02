@@ -23,8 +23,8 @@ const Configurator = () => {
                 transtition-all
                 p-2 
                 mt-4 
-                rounded-3xl 
-                cursor-pointer 
+                cursor-pointer
+                rounded-full
                 ${
                   deskConfig.topMaterial === item.id
                     ? "bg-zinc-300"
@@ -37,14 +37,14 @@ const Configurator = () => {
                 alt="img"
                 className="w-14 h-14 rounded-full"
               />
-              <div>{item.name}</div>
+              <div className="font-semibold">{item.name}</div>
             </button>
           );
         })}
       </div>
       <h2 className="font-semibold text-xl pl-2">桌腿选择</h2>
       <hr />
-      <div className="flex flex-row">
+      <div className="flex flex-row gap-1">
         {frameTypes.map((item) => {
           return (
             <button
@@ -60,7 +60,7 @@ const Configurator = () => {
                 p-2 
                 mt-4 
                 rounded-3xl 
-                cursor-pointer 
+                cursor-pointer
                 ${
                   deskConfig.frameType === item.id ? "bg-zinc-300" : "bg-white"
                 }`}
@@ -69,7 +69,7 @@ const Configurator = () => {
                 deskConfig.setElectric(item.id == "adjustable");
               }}
             >
-              <div className="font-semibold">{item.name}</div>
+              <div className="font-semibold grow">{item.name}</div>
             </button>
           );
         })}
@@ -91,7 +91,7 @@ const Configurator = () => {
                 transtition-all
                  p-2 
                  mt-4 
-                 rounded-3xl 
+                 rounded-full
                  cursor-pointer 
                  ${
                    deskConfig.frameColor === item.id
@@ -104,7 +104,7 @@ const Configurator = () => {
                 className="h-14 w-14 rounded-full"
                 style={{ backgroundColor: item.id }}
               ></div>
-              <div>{item.name}</div>
+              <div className="font-semibold">{item.name}</div>
             </button>
           );
         })}
@@ -114,15 +114,14 @@ const Configurator = () => {
           <h2 className="font-semibold text-xl pl-2">电动升降</h2>
           <hr />
           <div className="flex flex-row">
-            <button
-              className={`
-            flex 
-            items-center 
-            border-2 
-            space-x-2 
-            w-full 
-            hover:bg-zinc-300 
-            transtition-all
+            <button className={`
+              flex 
+              items-center 
+              border-2 
+              space-x-2 
+              w-full 
+              hover:bg-zinc-300 
+              transtition-all
               p-2 
               mt-4 
               rounded-3xl 
@@ -130,6 +129,9 @@ const Configurator = () => {
               ${deskConfig.electric ? "bg-zinc-300" : "bg-white"}`}
               onClick={() => deskConfig.setElectric(!deskConfig.electric)}
             >
+              <div className={`relative h-6 w-12 rounded-full p-1 transition-colors duration-300 ${deskConfig.electric ? 'bg-slate-800' : 'bg-gray-300'}`}>
+                <div className={`absolute h-4 w-4 rounded-full bg-white shadow-md transition-transform duration-300 ${deskConfig.electric ? 'translate-x-6' : 'translate-x-0'}`}></div>
+              </div>
               <div className="font-semibold">
                 {deskConfig.electric ? "已选" : "未选"}
               </div>
